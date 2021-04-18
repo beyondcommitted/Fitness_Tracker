@@ -10,8 +10,9 @@ app.use(express.static('public'));
 app.use(morgan('dev'));
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
     useNewUrlParser: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false 
 });
 const mongodb = mongoose.connection;
 mongodb.on('error', console.error.bind(console, 'connection error'));
